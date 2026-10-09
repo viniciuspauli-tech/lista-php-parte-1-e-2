@@ -2,19 +2,19 @@
 function analisarNumero($numero) {
     $resultado = [];
 
-    // Par ou ímpar
+  
     $resultado['par_impar'] = ($numero % 2 === 0) ? 'Par' : 'Ímpar';
 
-    // Primo ou não
+   
     $resultado['primo'] = ehPrimo($numero) ? 'Primo' : 'Não é primo';
 
-    // Perfeito ou não
+    
     $resultado['perfeito'] = ehPerfeito($numero) ? 'Perfeito' : 'Não é perfeito';
 
     return $resultado;
 }
 
-// Função auxiliar: verifica se um número é primo
+
 function ehPrimo($numero) {
     if ($numero < 2) {
         return false;
@@ -27,8 +27,6 @@ function ehPrimo($numero) {
     return true;
 }
 
-// Função auxiliar: verifica se um número é perfeito
-// (a soma de seus divisores próprios é igual ao próprio número)
 function ehPerfeito($numero) {
     if ($numero < 1) {
         return false;
@@ -42,7 +40,7 @@ function ehPerfeito($numero) {
     return $soma === $numero;
 }
 
-// Exemplo de uso
+
 $numero = 28;
 $analise = analisarNumero($numero);
 

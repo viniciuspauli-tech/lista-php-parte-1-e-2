@@ -1,14 +1,11 @@
 <?php
-
-
-function gerarSenha($quantidade)
-{
+function gerarSenha($tamanho) {
     $caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*?";
     $senha = "";
 
-    for ($i = 0; $i < $quantidade; $i++) {
-        $indice = rand(0, strlen($caracteres) - 1);
-        $senha .= $caracteres[$indice];
+    for ($i = 0; $i < $tamanho; $i++) {
+        $posicao = rand(0, strlen($caracteres) - 1);
+        $senha = $senha . $caracteres[$posicao];
     }
 
     return $senha;
@@ -16,7 +13,6 @@ function gerarSenha($quantidade)
 
 $tamanho = 12;
 
-echo "Quantidade de caracteres: $tamanho <br><br>";
-echo "Senha gerada: " . gerarSenha($tamanho);
-
+echo "Quantidade de caracteres: $tamanho <br>";
+echo "Senha gerada: " . gerarSenha($tamanho) . "<br>";
 ?>

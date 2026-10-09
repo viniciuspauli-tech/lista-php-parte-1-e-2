@@ -1,31 +1,25 @@
 <?php
+function analisarTexto($texto) {
+    $vogais = 0;
+    $consoantes = 0;
 
+    for ($i = 0; $i < strlen($texto); $i++) {
+        $letra = strtolower($texto[$i]);
 
-function analisarTexto($texto)
-{
-    $palavras = str_word_count($texto);
-    $caracteres = mb_strlen($texto);
+        if (strpos("aeiou", $letra) !== false) {
+            $vogais++;
+        } elseif (ctype_alpha($letra)) {
+            $consoantes++;
+        }
+    }
 
-    $vogais = preg_match_all('/[aeiouáàãâéêíóôõúü]/iu', $texto);
-
-    $consoantes = preg_match_all('/[bcdfghjklmnpqrstvwxyzç]/iu', $texto);
-
-    return [
-        "palavras" => $palavras,
-        "caracteres" => $caracteres,
-        "vogais" => $vogais,
-        "consoantes" => $consoantes
-    ];
+    echo "Texto: $texto <br>";
+    echo "Palavras: " . str_word_count($texto) . "<br>";
+    echo "Caracteres: " . strlen($texto) . "<br>";
+    echo "Vogais: $vogais <br>";
+    echo "Consoantes: $consoantes <br>";
 }
 
-$texto = "Programação em PHP é muito interessante!";
-
-$resultado = analisarTexto($texto);
-
-echo "Texto: $texto <br><br>";
-echo "Quantidade de palavras: " . $resultado["palavras"] . "<br>";
-echo "Quantidade de caracteres: " . $resultado["caracteres"] . "<br>";
-echo "Quantidade de vogais: " . $resultado["vogais"] . "<br>";
-echo "Quantidade de consoantes: " . $resultado["consoantes"] . "<br>";
-
+$texto = "Programacao em PHP e muito interessante!";
+analisarTexto($texto);
 ?>

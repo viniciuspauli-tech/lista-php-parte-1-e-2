@@ -1,20 +1,17 @@
 <?php
+function mascararCpf($cpf) {
+    $cpf = str_replace(".", "", $cpf);
+    $cpf = str_replace("-", "", $cpf);
 
-function mascararCpf($cpf)
-{
+    $total = strlen($cpf);
+    $estrelas = str_repeat("*", $total - 4);
+    $final = substr($cpf, -4);
 
-    $cpf = str_replace(['.', '-'], '', $cpf);
-
-
-    $cpfMascarado = str_repeat('*', strlen($cpf) - 4) . substr($cpf, -4);
-
-    return $cpfMascarado;
+    return $estrelas . $final;
 }
 
 $cpf = "123.456.789-00";
 
 echo "CPF original: $cpf <br>";
-
-echo "CPF mascarado: " . mascararCpf($cpf);
-
+echo "CPF mascarado: " . mascararCpf($cpf) . "<br>";
 ?>

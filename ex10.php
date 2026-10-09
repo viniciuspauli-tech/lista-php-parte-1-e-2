@@ -1,36 +1,35 @@
 <?php
 function calcularMedia($notas) {
-    if (empty($notas)) {
-        return "O vetor de notas está vazio.";
+    $maior = $notas[0];
+    $menor = $notas[0];
+    $soma = 0;
+
+    foreach ($notas as $nota) {
+        if ($nota > $maior) {
+            $maior = $nota;
+        }
+        if ($nota < $menor) {
+            $menor = $nota;
+        }
+        $soma = $soma + $nota;
     }
 
-    $maior = max($notas);
-    $menor = min($notas);
-    $media = array_sum($notas) / count($notas);
+    $media = $soma / count($notas);
 
-    // Definindo a situação final com base na média
     if ($media >= 7) {
-        $situacao = 'Aprovado';
+        $situacao = "Aprovado";
     } elseif ($media >= 5) {
-        $situacao = 'Recuperação';
+        $situacao = "Recuperacao";
     } else {
-        $situacao = 'Reprovado';
+        $situacao = "Reprovado";
     }
 
-    return [
-        'maior_nota' => $maior,
-        'menor_nota' => $menor,
-        'media'      => round($media, 2),
-        'situacao'   => $situacao
-    ];
+    echo "Maior nota: $maior <br>";
+    echo "Menor nota: $menor <br>";
+    echo "Media: $media <br>";
+    echo "Situacao: $situacao <br>";
 }
 
-// Exemplo de uso
-$notasAluno = [7.5, 6.0, 8.5, 5.0];
-$resultado = calcularMedia($notasAluno);
-
-echo "Maior nota: " . $resultado['maior_nota'] . "\n";
-echo "Menor nota: " . $resultado['menor_nota'] . "\n";
-echo "Média: " . $resultado['media'] . "\n";
-echo "Situação: " . $resultado['situacao'] . "\n";
+$notas = [7.5, 6.0, 8.5, 5.0];
+calcularMedia($notas);
 ?>
